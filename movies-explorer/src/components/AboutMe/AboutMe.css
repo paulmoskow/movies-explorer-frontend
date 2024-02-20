@@ -1,0 +1,48 @@
+.aboutme__subtitle {
+  font-size: 1.12rem;
+  font-weight: 500;
+  line-height: 1.11;
+  margin: 18px 0 26px;
+}
+
+.aboutme__text {
+  line-height: 1.57;
+  max-width: 600px;
+  margin-bottom: 99px;
+}
+
+.aboutme__image {
+  margin-left: 49px;
+  max-width: 270px;
+  min-height: 327px;
+  border-radius: 10px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.aboutme__link {
+  margin: 0;
+  font-size: 0.87rem;
+  font-weight: 500;
+  line-height: 1.21;
+  text-decoration: none;
+  color: #FFF;
+}
+
+@media screen and (max-width: 896px) {
+  .aboutme__text {
+    line-height: 1.57;
+    max-width: 364px;
+    margin-bottom: 87px;
+  }
+
+  .aboutme__subtitle {
+    font-size: 0.75rem;
+    line-height: 1.5;
+  }
+
+  .aboutme__image {
+    max-width: 255px;
+    min-height: 307px;
+  }
+}

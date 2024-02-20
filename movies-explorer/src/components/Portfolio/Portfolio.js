@@ -1,0 +1,35 @@
+
+
+function Portfolio() {
+  return (
+    <section className="section">
+      <h2 className="portfolio__title">Портфолио</h2>
+      <div className="portfolio__element portfolio__element_underlined">
+        <h3 className="portfolio__text">Статичный сайт</h3>
+        <a href="#">
+          <svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M2.60653 16.5241L0.944603 14.8622L13.3026 2.48295H3.7571L3.77841 0.181818H17.2656V13.6903H14.9432L14.9645 4.14489L2.60653 16.5241Z" fill="white"/>
+  </svg>
+        </a>
+      </div>
+      <div className="portfolio__element portfolio__element_underlined">
+        <h3 className="portfolio__text">Адаптивный сайт</h3>
+        <a href="#">
+          <svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M2.60653 16.5241L0.944603 14.8622L13.3026 2.48295H3.7571L3.77841 0.181818H17.2656V13.6903H14.9432L14.9645 4.14489L2.60653 16.5241Z" fill="white"/>
+  </svg>
+        </a>
+      </div>
+      <div className="portfolio__element">
+        <h3 className="portfolio__text">Одностраничное приложение</h3>
+        <a href="#">
+          <svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M2.60653 16.5241L0.944603 14.8622L13.3026 2.48295H3.7571L3.77841 0.181818H17.2656V13.6903H14.9432L14.9645 4.14489L2.60653 16.5241Z" fill="white"/>
+  </svg>
+        </a>
+      </div>
+    </section>
+  );
+}
+
+export default Portfolio;

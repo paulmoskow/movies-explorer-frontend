@@ -1,0 +1,36 @@
+.promo {
+  width: 100%;
+}
+
+.promo__box {
+  margin: 20px auto 0;
+  width: 94.8vw;
+  max-width: 1200px;
+  height: 493px;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+  background: #272727;
+  border-radius: 10px;
+}
+
+.promo__text {
+  text-align: center;
+}
+
+@media screen and (max-width: 896px) {
+  .promo__box {
+    width: 94.8vw;
+    height: 834px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .promo__box {
+    margin-top: 14px;
+    width: 93.7vw;
+    height: 586px;
+  }
+}
+
