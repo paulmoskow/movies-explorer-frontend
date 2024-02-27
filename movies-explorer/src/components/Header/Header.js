@@ -1,22 +1,15 @@
 import logo from '../../images/logo.svg';
+import { NavLink } from 'react-router-dom';
 
-function Header() {
+function Header({ children }) {
   return (
     <header className="header">
-      <img src={logo} className="header__logo" alt="Логотип" />
-{/*   <div className="header__container">
-        <h2 className="header__movies">Фильмы</h2>
-        <h2 className="header__movies">Сохраненные фильмы</h2>
-      </div>
-      <div className="header__container">
-        <h2 className="header__profile">Аккаунт</h2>
-      </div>*/}
-       <div className="header__container">
-        <h2 className="header__button">Регистрация</h2>
-        <h2 className="header__button">Войти</h2>
-      </div>
+      <NavLink to="/"><img src={logo} className="header__logo" alt="Логотип" /></NavLink>
+      {children}
     </header>
   );
 }
 
 export default Header;
+
+

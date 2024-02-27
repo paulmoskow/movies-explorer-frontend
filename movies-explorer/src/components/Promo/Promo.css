@@ -29,8 +29,13 @@
 @media screen and (max-width: 600px) {
   .promo__box {
     margin-top: 14px;
-    width: 93.7vw;
+    width: 91.2vw;
     height: 586px;
+  }
+
+  .promo__text {
+    max-width: 292px;
+    letter-spacing: -0.04em;
   }
 }
 

@@ -27,6 +27,7 @@
   font-size: 0.87rem;
   line-height: 1.21;
   color: #4285F4;
+  text-decoration: none;
 }
 
 @media screen and (max-width: 896px) {

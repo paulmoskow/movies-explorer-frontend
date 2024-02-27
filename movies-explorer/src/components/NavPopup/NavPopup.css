@@ -1,0 +1,69 @@
+.nav-popup {
+  width: 99.5%;
+  height: 100%;
+  background: #0000001E;
+  display: flex;
+  visibility: hidden;
+  transition: visibility 0s, opacity 300ms linear 300ms;
+  justify-content: right;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.nav-popup__container {
+  width: 67.7%;
+  height: 100%;
+  background: #000000;
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+  align-items: end;
+}
+
+.nav-popup__close-button {
+  width: 22px;
+  height: 22px;
+  background-image: url("../../images/Group.svg");
+  background-position: center;
+  rotate: 45;
+  margin: 29px 29px 0 0;
+  cursor: pointer;
+}
+
+.nav-popup__navtab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 105px 0 0 0;
+  width: 100%;
+}
+
+.nav-popup__item {
+  font-size: 1.12rem;
+  font-weight: 500;
+  line-height: 1.21;
+  color: #fff;
+  text-decoration: none;
+  margin-bottom: 28px;
+}
+
+.nav-popup__item_underlined {
+  border-bottom: 2px solid #fff;
+  padding-bottom: 4px;
+  margin-bottom: 24px;
+}
+
+.nav-popup__profile {
+  margin-top: 593px;
+}
+
+
+@media screen and (max-width: 600px) {
+  .nav-popup__container {
+    width: 100%;
+  }
+}

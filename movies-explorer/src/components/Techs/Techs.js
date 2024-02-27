@@ -1,8 +1,9 @@
+import { NavLink } from "react-router-dom";
 
 
 function Techs() {
   return (
-    <section className="techs__section">
+    <section className="techs__section" id="technologies">
       <div className="section">
         <h2 className="section__title">Технологии</h2>
         <div className="section__container section__container_underlined">
@@ -12,13 +13,13 @@ function Techs() {
           </div>
         </div>
         <div className="navtab techs__navtab">
-          <a href='#' className="techs__link">HTML</a>
-          <a href='#' className="techs__link">CSS</a>
-          <a href='#' className="techs__link">JS</a>
-          <a href='#' className="techs__link">React</a>
-          <a href='#' className="techs__link">Git</a>
-          <a href='#' className="techs__link">Express.js</a>
-          <a href='#' className="techs__link">mongoDB</a>
+          <NavLink to='https://developer.mozilla.org/en-US/docs/Web/HTML' className="techs__link" target="_blank">HTML</NavLink>
+          <NavLink to='https://developer.mozilla.org/en-US/docs/Web/CSS' className="techs__link" target="_blank">CSS</NavLink>
+          <NavLink to='https://developer.mozilla.org/en-US/docs/Web/JavaScript' className="techs__link" target="_blank">JS</NavLink>
+          <NavLink to='https://react.dev/' className="techs__link" target="_blank">React</NavLink>
+          <NavLink to='https://github.com/' className="techs__link" target="_blank">Git</NavLink>
+          <NavLink to='https://expressjs.com/' className="techs__link" target="_blank">Express.js</NavLink>
+          <NavLink to='https://www.mongodb.com/' className="techs__link" target="_blank">mongoDB</NavLink>
         </div>
       </div>
     </section>

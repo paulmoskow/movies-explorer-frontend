@@ -1,0 +1,28 @@
+.cards__section {
+  max-width: 1140px;
+  width: 99.5%;
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-rows: repeat(4, minmax(min-content, max-content));
+  grid-template-columns: repeat(3, minmax(min-content, max-content));
+  gap: 59px 30px;
+  margin: 0 auto;
+  justify-content: center;
+  padding-top: 80px;
+}
+
+@media screen and (max-width: 1156px) {
+  .cards__section {
+    grid-template-rows: repeat(4, minmax(min-content, max-content));
+    grid-template-columns: repeat(2, minmax(min-content, max-content));
+  }
+}
+
+@media screen and (max-width: 730px) {
+  .cards__section {
+    grid-template-rows: repeat(5, minmax(min-content, max-content));
+    grid-template-columns: repeat(1, minmax(min-content, max-content));
+    row-gap: 40px;
+    padding-top: 40px;
+  }
+}

@@ -22,6 +22,15 @@
   line-height: 1.66;
 }
 
+.portfolio__link {
+  background-image: url('../../images/text__COLOR_font-main.svg');
+  width: 29px;
+  height: 60px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
 @media screen and (max-width: 896px) {
   .portfolio__text {
     font-size: 1.75rem;
@@ -32,4 +41,32 @@
   .portfolio__title {
     margin-top: 90px;
   }
+
+  .portfolio__link {
+    width: 27px;
+  }
 }
+
+@media screen and (max-width: 600px) {
+  .portfolio__title {
+    margin-top: 70px;
+    font-size: 0.87rem;
+    line-height: 1.42;
+  }
+
+  .portfolio__text {
+    font-size: 1.12rem;
+    line-height: 1.55;
+  }
+
+  .portfolio__link {
+    width: 18px;
+    height: 28px;
+    background-size: 50%;
+  }
+
+  .portfolio__element_underlined {
+    border-bottom: 1px solid #fff;
+  }
+}
+

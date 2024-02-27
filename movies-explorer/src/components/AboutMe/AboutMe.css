@@ -46,3 +46,22 @@
     min-height: 307px;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .aboutme__image {
+    max-width: 292px;
+    min-height: 352px;
+    margin: 0 auto;
+    order: -1;
+  }
+
+  .about-me__text-box {
+    width: 100%;
+    margin: 40px 0 0;
+  }
+
+  .aboutme__text {
+    margin-bottom: 40px;
+    max-width: 100%;
+  }
+}
