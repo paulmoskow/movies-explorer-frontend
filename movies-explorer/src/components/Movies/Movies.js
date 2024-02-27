@@ -3,9 +3,10 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 
 function Movies() {
   return (
-    <section>
+    <section className='movies__section'>
       <SearchForm/>
       <MoviesCardList/>
+      <button className="movies__button">Еще</button>
     </section>
   )
 }

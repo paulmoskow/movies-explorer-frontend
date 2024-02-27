@@ -1,9 +1,9 @@
 import whenIThinkOfGerman from '../../images/pic__COLOR_pic.jpg';
 
-function MoviesCard() {
+function MoviesCard({ children }) {
   return (
     <section className='card__section'>
-      <div className='card__button'></div>
+      {children}
       <img alt='Когда я думаю о Германии ночью' src={whenIThinkOfGerman} className="card__image"/>
       <div className='card__info'>
         <p className='card__name'>Когда я думаю о Германии ночью</p>

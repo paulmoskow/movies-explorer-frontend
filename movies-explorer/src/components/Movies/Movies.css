@@ -1,0 +1,20 @@
+.movies__button {
+  width: 320px;
+  height: 36px;
+  margin: 0 auto;
+  border-radius: 6px;
+  border: 1px solid #424242;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.25;
+  text-align: center;
+  color: #fff;
+  background-color: inherit;
+}
+
+.movies__section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

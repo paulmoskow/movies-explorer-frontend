@@ -4,6 +4,7 @@
   height: 44px;
   border: none;
   margin-left: 10px;
+  cursor: pointer;
 }
 
 .search-form__input {
