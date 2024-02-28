@@ -140,6 +140,22 @@
   text-decoration: none;
 }
 
+.button {
+  cursor: pointer;
+}
+
+.link {
+  cursor: pointer;
+}
+
+.button:hover {
+  opacity: 80%;
+}
+
+.link:hover {
+  opacity: 70%;
+}
+
 @media screen and (max-width: 896px) {
   .section__text {
     font-size: 0.75rem;
@@ -192,6 +208,8 @@
 
   .form__container {
     width: 260px;
+    justify-content: center;
+    align-items: center;
   }
 
   .section__title {

@@ -11,7 +11,7 @@ function AboutMe() {
           <p className="aboutme__subtitle">Фронтенд-разработчик, 40 лет</p>
           <p className="section__text aboutme__text">Я люблю слушать музыку, а ещё увлекаюсь кинематографом. Недавно начал кодить.
 После того, как прошёл курс по веб-разработке, начал заниматься фриланс-заказами и ушёл с постоянной работы.</p>
-          <NavLink to='https://github.com/paulmoskow' className="aboutme__link" target="_blank">Github</NavLink>
+          <NavLink to='https://github.com/paulmoskow' className="link aboutme__link" target="_blank">Github</NavLink>
         </div>
         <img alt="Павел Москов" src={image} className="aboutme__image" />
       </div>

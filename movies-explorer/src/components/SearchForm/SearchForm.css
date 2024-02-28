@@ -1,10 +1,13 @@
 .search-form__button {
-  background: url('../../images/find-3.svg');
+  background: url('../../images/find-3.svg') ;
   width: 44px;
   height: 44px;
   border: none;
   margin-left: 10px;
   cursor: pointer;
+  background-size: contain;
+  overflow: hidden;
+  background-repeat: no-repeat;
 }
 
 .search-form__input {

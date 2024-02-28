@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 function Header({ children }) {
   return (
     <header className="header">
-      <NavLink to="/"><img src={logo} className="header__logo" alt="Логотип" /></NavLink>
+      <NavLink to="/"><img src={logo} className="button header__logo" alt="Логотип" /></NavLink>
       {children}
     </header>
   );

@@ -6,7 +6,7 @@ function Movies() {
     <section className='movies__section'>
       <SearchForm/>
       <MoviesCardList/>
-      <button className="movies__button">Еще</button>
+      <button className="button movies__button">Еще</button>
     </section>
   )
 }

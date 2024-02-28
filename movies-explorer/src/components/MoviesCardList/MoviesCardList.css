@@ -6,7 +6,7 @@
   grid-template-rows: repeat(3, minmax(min-content, max-content));
   grid-template-columns: repeat(3, minmax(min-content, max-content));
   gap: 59px 30px;
-  margin: 0 auto;
+  margin: 0 auto 10px;
   justify-content: center;
   padding-top: 80px;
 }

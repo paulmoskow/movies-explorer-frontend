@@ -14,8 +14,8 @@ function Profile() {
           <p className="profile__table_column_two">paulmoskow@yandex.ru</p>
         </div>
       </div>
-      <NavLink to="/movies"><h3 className="profile__button">Редактировать</h3></NavLink>
-      <NavLink to="/"><h3 className="profile__button profile__button_logout">Выйти из аккаунта</h3></NavLink>
+      <NavLink to="/movies" className="button profile__button">Редактировать</NavLink>
+      <NavLink to="/" className="button profile__button profile__button_logout">Выйти из аккаунта</NavLink>
     </section>
   )
 }

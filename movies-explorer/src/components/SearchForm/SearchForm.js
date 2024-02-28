@@ -8,8 +8,9 @@ function SearchForm() {
           <input className="input__field search-form__input"
             type="text"
             placeholder="Фильм"
+            required
           />
-          <button className="search-form__button"></button>
+          <button className="button search-form__button"></button>
         </div>
         <FilterCheckbox/>
       </form>

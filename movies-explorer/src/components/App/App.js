@@ -20,8 +20,8 @@ function App() {
             <>
               <Header>
                 <div className="header__container">
-                  <NavLink to="/signup" className="header__button">Регистрация</NavLink>
-                  <NavLink to="/signin" className="header__button">Войти</NavLink>
+                  <NavLink to="/signup" className="button header__button">Регистрация</NavLink>
+                  <NavLink to="/signin" className="button header__button">Войти</NavLink>
                 </div>
               </Header>
               <Main/>
@@ -33,11 +33,11 @@ function App() {
               <Header>
                 <>
                   <div className="header__container header__container_hidden">
-                    <NavLink to="/movies" className="header__movies header__movies_underlined">Фильмы</NavLink>
-                    <NavLink to="/saved-movies" className="header__movies">Сохраненные фильмы</NavLink>
+                    <NavLink to="/movies" className="link header__movies header__movies_underlined">Фильмы</NavLink>
+                    <NavLink to="/saved-movies" className="link header__movies">Сохраненные фильмы</NavLink>
                   </div>
                   <div className="header__container header__container_hidden">
-                    <NavLink to="/profile" className="header__profile">Аккаунт</NavLink>
+                    <NavLink to="/profile" className="button header__profile">Аккаунт</NavLink>
                   </div>
                   <div className="header__menu-button"></div>
                 </>
@@ -51,11 +51,11 @@ function App() {
               <Header>
                 <>
                   <div className="header__container header__container_hidden">
-                    <NavLink to="/movies" className="header__movies">Фильмы</NavLink>
-                    <NavLink to="/saved-movies" className="header__movies header__movies_underlined">Сохраненные фильмы</NavLink>
+                    <NavLink to="/movies" className="link header__movies">Фильмы</NavLink>
+                    <NavLink to="/saved-movies" className="link header__movies header__movies_underlined">Сохраненные фильмы</NavLink>
                   </div>
                   <div className="header__container header__container_hidden">
-                    <NavLink to="/profile" className="header__profile">Аккаунт</NavLink>
+                    <NavLink to="/profile" className="button header__profile">Аккаунт</NavLink>
                   </div>
                   <div className="header__menu-button"></div>
                 </>
@@ -66,7 +66,18 @@ function App() {
           } />
           <Route path="/profile" element={
             <>
-              <Header/>
+              <Header>
+                <>
+                  <div className="header__container header__container_hidden">
+                    <NavLink to="/movies" className="link header__movies header__movies_underlined">Фильмы</NavLink>
+                    <NavLink to="/saved-movies" className="link header__movies">Сохраненные фильмы</NavLink>
+                  </div>
+                  <div className="header__container header__container_hidden">
+                    <NavLink to="/profile" className="button header__profile">Аккаунт</NavLink>
+                  </div>
+                  <div className="button header__menu-button"></div>
+                </>
+              </Header>
               <Profile/>
             </>
           } />
