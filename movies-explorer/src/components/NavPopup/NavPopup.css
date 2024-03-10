@@ -13,6 +13,10 @@
   left: 0;
 }
 
+.nav-popup_opened {
+  visibility: visible;
+}
+
 .nav-popup__container {
   width: 67.7%;
   height: 100%;

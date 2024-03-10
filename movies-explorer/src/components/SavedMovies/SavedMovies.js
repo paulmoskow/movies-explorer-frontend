@@ -1,9 +1,9 @@
 import React from 'react';
 import SearchForm from '../SearchForm/SearchForm';
-import MoviesCardList from '../MoviesCardList/MoviesCardList';
+import SavedMoviesCardList from '../SavedMoviesCardList/SavedMoviesCardList';
 import Preloader from '../Preloader/Preloader';
 
-function Movies({ movies, preloader, setShorts, shorts, onSearch, updateSavedMovies }) {
+function SavedMovies({ movies, preloader, setShorts, shorts, onSearch, onDelete }) {
 
   const [list, setList] = React.useState(12);
 
@@ -43,10 +43,10 @@ function Movies({ movies, preloader, setShorts, shorts, onSearch, updateSavedMov
       {preloader ? (
         <Preloader/>
       ) : (
-        <MoviesCardList movies={movies}
+        <SavedMoviesCardList movies={movies}
         list={list}
         shorts={shorts}
-        updateSavedMovies={updateSavedMovies}
+        onDelete={onDelete}
       />
       )}
       {list < movies.length && (
@@ -56,4 +56,4 @@ function Movies({ movies, preloader, setShorts, shorts, onSearch, updateSavedMov
   )
 }
 
-export default Movies;
+export default SavedMovies;

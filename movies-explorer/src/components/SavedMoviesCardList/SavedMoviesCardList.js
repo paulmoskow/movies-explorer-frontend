@@ -1,7 +1,7 @@
 import React from "react";
-import MoviesCard from "../MoviesCard/MoviesCard";
+import SavedMoviesCard from "../SavedMoviesCard/SavedMoviesCard";
 
-function MoviesCardList({ movies, list, shorts, updateSavedMovies }) {
+function SavedMoviesCardList({ movies, list, shorts, onDelete }) {
 
   const [noMovies, setNoMovies] = React.useState(false);
 
@@ -21,10 +21,11 @@ function MoviesCardList({ movies, list, shorts, updateSavedMovies }) {
         )
         :
         (shortsFilter.slice(0, list).map((movie) => (
-          <MoviesCard
+          <SavedMoviesCard
             key={movie.id}
             movie={movie}
-            updateSavedMovies={updateSavedMovies}
+            noMovies={noMovies}
+            onDelete={onDelete}
           />
         )))
       }
@@ -32,5 +33,5 @@ function MoviesCardList({ movies, list, shorts, updateSavedMovies }) {
   );
 }
 
-export default MoviesCardList;
+export default SavedMoviesCardList;
 

@@ -99,9 +99,8 @@
   .header__menu-button {
     visibility: visible;
     position: relative;
+    cursor: pointer;
   }
 }
 
-@media screen and (max-width: 600px) {
 
-}

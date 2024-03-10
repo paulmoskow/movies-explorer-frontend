@@ -103,6 +103,10 @@
   padding-left: 15px;
 }
 
+.input__field-invalid {
+  color: #EE3465;
+}
+
 .input__button {
   width: 396px;
   height: 45px;
@@ -133,6 +137,10 @@
   line-height: 1.2;
   color: #EE3465;
   margin: 10px 0 0;
+}
+
+.input__error-overbutton {
+  margin: 0 0 20px;
 }
 
 .input__link {
