@@ -44,7 +44,7 @@ function App() {
   //set token check
   React.useEffect(() => {
     tokenCheck()
-  }, []);
+  }, [localStorage.getItem('token'), localStorage.setItem('token')]);
 
   const tokenCheck = () => {
     if (localStorage.getItem('token')) {
@@ -67,7 +67,6 @@ function App() {
     mainApi.loadUserInfo()
       .then((data) => {
         setCurrentUser(data);
-        console.log(currentUser);
     })
     .catch((err) => {
       console.log(err);

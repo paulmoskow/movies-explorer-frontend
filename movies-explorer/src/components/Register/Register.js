@@ -9,7 +9,7 @@ import unsucceed from '../../images/no-union.svg';
 
 function Register({ handleRegister, onRegistrationClick }) {
 
-  const { formValue, handleChange, errors, isValid, resetForm } = useFormValidation();
+  const { formValues, handleChange, errors, isValid, resetForm } = useFormValidation();
 
   const navigate = useNavigate();
 
@@ -17,7 +17,7 @@ function Register({ handleRegister, onRegistrationClick }) {
     e.preventDefault();
 
     if (isValid) {
-      const { name, email, password } = formValue;
+      const { name, email, password } = formValues;
       register(name, email, password)
         .then((data) => {
           console.log(data)
@@ -43,7 +43,7 @@ function Register({ handleRegister, onRegistrationClick }) {
       <h2 className="form__title">Добро пожаловать!</h2>
       <form onSubmit={handleSubmit}>
         <h3 className="input__title">Имя</h3>
-        <input value={formValue.name}
+        <input value={formValues.name}
           onChange={handleChange}
           className="input__field"
           type="text"
@@ -52,7 +52,7 @@ function Register({ handleRegister, onRegistrationClick }) {
         />
         <span className="input__error">{errors.name}</span>
         <h3 className="input__title">E-mail</h3>
-        <input value={formValue.email}
+        <input value={formValues.email}
           onChange={handleChange}
           className="input__field"
           type="email"
@@ -61,7 +61,7 @@ function Register({ handleRegister, onRegistrationClick }) {
         />
         <span className="input__error">{errors.email}</span>
         <h3 className="input__title">Пароль</h3>
-        <input value={formValue.password}
+        <input value={formValues.password}
           onChange={handleChange}
           className={`input__field ${errors.password ? "input__field-invalid" : ''}`}
           type="password"

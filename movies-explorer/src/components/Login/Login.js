@@ -15,7 +15,8 @@ function Login({ handleLogin }) {
     e.preventDefault();
 
     if (isValid) {
-      login(formValues.email, formValues.password)
+      const { email, password } = formValues;
+      login(email, password)
         .then((data) => {
           if(data.token) {
             handleLogin();
