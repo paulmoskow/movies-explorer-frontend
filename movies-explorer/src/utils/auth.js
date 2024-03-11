@@ -1,7 +1,6 @@
 //function for registration on server
 
-export const BASE_URL = 'http://localhost:3000';
-
+import { BASE_URL } from "./constants";
 //send email and password on server
 
 export const register = (name, email, password) => {

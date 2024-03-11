@@ -1,4 +1,4 @@
-import { apiMain } from "./constants";
+import { BASE_URL } from "./constants";
 import { apiInitialMovies } from "./constants";
 
 class MainApi {
@@ -87,4 +87,4 @@ class MainApi {
   }
 }
 
-export const mainApi = new MainApi(apiMain);
+export const mainApi = new MainApi(BASE_URL);

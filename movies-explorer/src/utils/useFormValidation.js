@@ -2,12 +2,7 @@ import React from "react";
 
 export function useFormValidation() {
 
-  const [formValue, setFormValue] = React.useState({
-    name: '',
-    email: '',
-    password: ''
-  })
-
+  const [formValues, setFormValues] = React.useState({});
   const [errors, setErrors] = React.useState({});
   const [isValid, setIsValid] = React.useState(false);
 
@@ -30,8 +25,8 @@ export function useFormValidation() {
         }
     }
 
-    setFormValue({
-      ...formValue,
+    setFormValues({
+      ...formValues,
       [name]: value
     });
 
@@ -41,16 +36,16 @@ export function useFormValidation() {
     });
 
     setIsValid(target.closest('form').checkValidity());
-  }, [formValue, errors]);
+  }, [formValues, errors]);
 
   const resetForm = React.useCallback(
-    (newFormValue={}, newErrors={}, newIsValid = false) => {
-      setFormValue(newFormValue);
+    (newFormValues={}, newErrors={}, newIsValid = false) => {
+      setFormValues(newFormValues);
       setErrors(newErrors);
       setIsValid(newIsValid);
     },
-    [setFormValue, setErrors, setIsValid]
+    [setFormValues, setErrors, setIsValid]
   );
 
-  return { formValue, handleChange, errors, isValid, resetForm };
+  return { formValues, handleChange, errors, isValid, resetForm };
 }

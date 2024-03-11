@@ -7,7 +7,7 @@ import logo from '../../images/logo.svg';
 
 function Login({ handleLogin }) {
 
-  const { formValue, handleChange, errors, isValid, resetForm } = useFormValidation();
+  const { formValues, handleChange, errors, isValid, resetForm } = useFormValidation();
 
   const navigate = useNavigate();
 
@@ -15,7 +15,7 @@ function Login({ handleLogin }) {
     e.preventDefault();
 
     if (isValid) {
-      login(formValue.email, formValue.password)
+      login(formValues.email, formValues.password)
         .then((data) => {
           if(data.token) {
             handleLogin();
@@ -37,7 +37,7 @@ function Login({ handleLogin }) {
       <h2 className="form__title"> Рады видеть!</h2>
       <form onSubmit={handleSubmit}>
         <h3 className="input__title">E-mail</h3>
-        <input value={formValue.email}
+        <input value={formValues.email}
           onChange={handleChange}
           className="input__field"
           type="email"
@@ -46,7 +46,7 @@ function Login({ handleLogin }) {
         />
         <span className="input__error">{errors.email}</span>
         <h3 className="input__title">Пароль</h3>
-        <input value={formValue.password}
+        <input value={formValues.password}
           onChange={handleChange}
           className={`input__field ${errors.password ? "input__field-invalid" : ''}`}
           type="password"
