@@ -44,7 +44,7 @@ function App() {
   //set token check
   React.useEffect(() => {
     tokenCheck()
-  }, [localStorage.getItem('token'), localStorage.setItem('token')]);
+  }, [localStorage.getItem('token')]);
 
   const tokenCheck = () => {
     if (localStorage.getItem('token')) {
