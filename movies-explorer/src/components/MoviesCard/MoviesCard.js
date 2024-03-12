@@ -33,52 +33,55 @@ function MoviesCard({ movie, updateSavedMovies }) {
 
   //set save handle
   function handleSave(movie) {
+    const token = localStorage.getItem('token');
+    if(token) {
     //check if there any movie in DB
-    mainApi.getMovies()
-      .then((movies) => {
-        if (!movies) {
-          mainApi.addNewMovie(movie)
-            .then((res) => {
-              if(res) {
-                setSaved(true);
-                updateSavedMovies();
-              }
-            })
-            .catch((err) => {
-              console.log(err);
-            });
-        }
-        //set saved movie condition
-        const isMovieSaved = movies.some((m) => m.movieId === movie.id);
-        if (isMovieSaved) {
-          //set movie id
-          const objectId = movies.find((m) => m.movieId === movie.id)._id;
-          mainApi.deleteMovie(objectId)
-            .then((res) => {
-              if(res) {
-                setSaved(false);
-                updateSavedMovies();
-              }
-            })
-            .catch((err) => {
-              console.log(err);
-            });
-        } else {
-          mainApi.addNewMovie(movie)
-            .then((res) => {
-              if(res) {
-                setSaved(true);
-                updateSavedMovies();
-              }
-            })
-            .catch((err) => {
-              console.log(err);
-            });
-        };
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+      mainApi.getMovies()
+        .then((movies) => {
+          if (!movies) {
+            mainApi.addNewMovie(movie)
+              .then((res) => {
+                if(res) {
+                  setSaved(true);
+                  updateSavedMovies();
+                }
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          }
+          //set saved movie condition
+          const isMovieSaved = movies.some((m) => m.movieId === movie.id);
+          if (isMovieSaved) {
+            //set movie id
+            const objectId = movies.find((m) => m.movieId === movie.id)._id;
+            mainApi.deleteMovie(objectId)
+              .then((res) => {
+                if(res) {
+                  setSaved(false);
+                  updateSavedMovies();
+                }
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          } else {
+            mainApi.addNewMovie(movie)
+              .then((res) => {
+                if(res) {
+                  setSaved(true);
+                  updateSavedMovies();
+                }
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          };
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
 
   return (

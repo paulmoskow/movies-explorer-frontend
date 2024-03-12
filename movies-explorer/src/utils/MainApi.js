@@ -4,7 +4,6 @@ import { apiInitialMovies } from "./constants";
 class MainApi {
   constructor(url) {
     this._url = url;
-    this._token = localStorage.getItem('token');
   }
 
   _getResponse(res){
@@ -16,9 +15,10 @@ class MainApi {
 
   //get userinfo from server
   loadUserInfo() {
+    const token = localStorage.getItem('token');
     return fetch(`${this._url}/users/me`, {
       headers: {
-        authorization: `Bearer ${this._token}`,
+        authorization: `Bearer ${token}`,
       }
     })
     .then(this._getResponse);
@@ -26,11 +26,12 @@ class MainApi {
 
   //edit user profile on server
   editUserProfile(input) {
+    const token = localStorage.getItem('token');
     return fetch(`${this._url}/users/me`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
-        authorization: `Bearer ${this._token}`,
+        authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
         name: input.name,
@@ -41,9 +42,10 @@ class MainApi {
   }
 
   getMovies() {
+    const token = localStorage.getItem('token');
     return fetch(`${this._url}/movies`, {
       headers: {
-        authorization: `Bearer ${this._token}`,
+        authorization: `Bearer ${token}`,
       },
     })
     .then(this._getResponse);
@@ -52,12 +54,13 @@ class MainApi {
   addNewMovie(input) {
     const imageUrl = `${apiInitialMovies}${input.image.url}`;
     const thumbnailUrl = `${apiInitialMovies}${input.image.formats.thumbnail.url}`;
+    const token = localStorage.getItem('token');
 
     return fetch(`${this._url}/movies`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        authorization: `Bearer ${this._token}`,
+        authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
         country: input.country,
@@ -77,10 +80,11 @@ class MainApi {
   }
 
   deleteMovie(id) {
+    const token = localStorage.getItem('token');
     return fetch(`${this._url}/movies/${id}`, {
       method: 'DELETE',
       headers: {
-        authorization: `Bearer ${this._token}`,
+        authorization: `Bearer ${token}`,
       },
     })
     .then(this._getResponse);

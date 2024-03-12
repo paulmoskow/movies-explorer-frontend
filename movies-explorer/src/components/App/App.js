@@ -34,17 +34,10 @@ function App() {
   const [loggedIn, setLoggedIn] = React.useState(false);
   const navigate = useNavigate();
 
-  const handleSignOut = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('searchResults');
-    navigate('/signin', {replace: true});
-    setLoggedIn(false);
-  }
-
   //set token check
   React.useEffect(() => {
     tokenCheck()
-  }, [localStorage.getItem('token')]);
+  }, []);
 
   const tokenCheck = () => {
     if (localStorage.getItem('token')) {
@@ -71,7 +64,7 @@ function App() {
     .catch((err) => {
       console.log(err);
     });
-  }, []);
+  }, [loggedIn]);
 
   //handle for update user info
   function handleUpdateUser(userData) {
@@ -91,7 +84,7 @@ function App() {
     if (savedSearch) {
       setSearchResults(JSON.parse(savedSearch));
     }
-  }, []);
+  }, [loggedIn]);
 
   //initiate movies cards rendering with users prompt
   const handleSearch = (searchMovies) => {
@@ -136,7 +129,7 @@ function App() {
       .catch((err) => {
         console.log(err);
       })
-  }, [])
+  }, [loggedIn])
 
   //render saved movies when changes
   const updateSavedMovies = () => {
@@ -147,6 +140,13 @@ function App() {
       .catch((err) => {
         console.log(err);
       })
+  }
+
+  const handleSignOut = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('searchResults');
+    navigate('/signin', {replace: true});
+    setLoggedIn(false);
   }
 
   const handleRegister = ( text, image ) => {
