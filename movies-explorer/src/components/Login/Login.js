@@ -8,6 +8,7 @@ import logo from '../../images/logo.svg';
 function Login({ handleLogin }) {
 
   const { formValues, handleChange, errors, isValid, resetForm } = useFormValidation();
+  const [serverError, setServerError] = React.useState('');
 
   const navigate = useNavigate();
 
@@ -23,7 +24,12 @@ function Login({ handleLogin }) {
             navigate('/movies', {replace: true});
           }
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+          console.log(err);
+          if(err) {
+            setServerError('Вы ввели неправильный логин или пароль');
+          }
+        })
         .finally(() => {
           resetForm();
         });
@@ -56,6 +62,7 @@ function Login({ handleLogin }) {
         />
         <span className="input__error">{errors.password}</span>
         <button className="button input__button login__button" disabled={!isValid}>Войти</button>
+       {serverError && <span className="input__error input__error-overbutton input__error-login">{serverError}</span>}
         <h3 className="input__button-alternative">Еще не зарегистрированы? <NavLink to="/signup" className='link input__link'>Регистрация</NavLink></h3>
       </form>
     </section>

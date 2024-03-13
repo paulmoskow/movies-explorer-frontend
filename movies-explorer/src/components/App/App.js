@@ -28,7 +28,8 @@ function App() {
   const [shorts, setShorts] = React.useState(false);
   const [searchResults, setSearchResults] = React.useState([]);
   const [currentUser, setCurrentUser] = React.useState({});
-  const [isBurgerMenuOpen, setIsBurgerMenuOpen] = React.useState(false)
+  const [isBurgerMenuOpen, setIsBurgerMenuOpen] = React.useState(false);
+  const [searchError, setSearchError] = React.useState('');
 
   //set LoggedIn status
   const [loggedIn, setLoggedIn] = React.useState(false);
@@ -90,24 +91,27 @@ function App() {
   const handleSearch = (searchMovies) => {
     //start preloader
     setPreloader(true);
-    moviesApi.getInitialCards()
-      .then((movie) => {
-        setMovies(movie);
-        //filter movies massive with users prompt
-        const searchResults = movies.filter(movie =>
-          movie.nameRU.toLowerCase().includes(searchMovies.toLowerCase()) ||
-          movie.nameEN.toLowerCase().includes(searchMovies.toLowerCase())
-        );
-        //save search results in the stock
-        setSearchResults(searchResults);
-        //save search result in the localStorage
-        localStorage.setItem('searchResults', JSON.stringify(searchResults));
-        //stop preloader
-        setPreloader(false);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+
+      moviesApi.getInitialCards()
+        .then((movie) => {
+          setMovies(movie);
+          //filter movies massive with users prompt
+          const searchResults = movies.filter(movie =>
+            movie.nameRU.toLowerCase().includes(searchMovies.toLowerCase()) ||
+            movie.nameEN.toLowerCase().includes(searchMovies.toLowerCase())
+          );
+          //save search results in the stock
+          setSearchResults(searchResults);
+          //save search result in the localStorage
+          localStorage.setItem('searchResults', JSON.stringify(searchResults));
+          //stop preloader
+          setPreloader(false);
+        })
+        .catch((err) => {
+          console.log(err);
+          setPreloader(false);
+          setSearchError('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз.')
+        });
   }
 //set search for saved movies
   const handleSavedSearch = (searchMovies) => {
@@ -227,6 +231,8 @@ function App() {
                   shorts={shorts}
                   onSearch={handleSearch}
                   updateSavedMovies={updateSavedMovies}
+                  savedMovies={savedMovies}
+                  searchError={searchError}
                 />}
                 <Footer/>
               </>

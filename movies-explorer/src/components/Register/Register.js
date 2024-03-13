@@ -20,7 +20,6 @@ function Register({ handleRegister, onRegistrationClick }) {
       const { name, email, password } = formValues;
       register(name, email, password)
         .then((data) => {
-          console.log(data)
           navigate('/signin', {replace: true});
           handleRegister('Успех! Вы зарегистрировались.', succeed);
         })

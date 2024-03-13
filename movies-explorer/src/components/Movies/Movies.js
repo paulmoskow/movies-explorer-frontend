@@ -3,7 +3,15 @@ import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Preloader from '../Preloader/Preloader';
 
-function Movies({ movies, preloader, setShorts, shorts, onSearch, updateSavedMovies }) {
+function Movies({ searchError,
+  savedMovies,
+  movies,
+  preloader,
+  setShorts,
+  shorts,
+  onSearch,
+  updateSavedMovies
+}) {
 
   const [list, setList] = React.useState(12);
 
@@ -47,6 +55,8 @@ function Movies({ movies, preloader, setShorts, shorts, onSearch, updateSavedMov
         list={list}
         shorts={shorts}
         updateSavedMovies={updateSavedMovies}
+        savedMovies={savedMovies}
+        searchError={searchError}
       />
       )}
       {list < movies.length && (

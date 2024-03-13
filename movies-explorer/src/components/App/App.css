@@ -143,6 +143,12 @@
   margin: 0 0 20px;
 }
 
+.input__error-login {
+  position: relative;
+  top: -80px;
+  text-align: center;
+}
+
 .input__link {
   color: #4285F4;
   text-decoration: none;

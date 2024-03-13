@@ -1,7 +1,14 @@
 import React from "react";
 import MoviesCard from "../MoviesCard/MoviesCard";
 
-function MoviesCardList({ movies, list, shorts, updateSavedMovies }) {
+function MoviesCardList({
+  searchError,
+  savedMovies,
+  movies,
+  list,
+  shorts,
+  updateSavedMovies
+}) {
 
   const [noMovies, setNoMovies] = React.useState(false);
 
@@ -15,6 +22,7 @@ function MoviesCardList({ movies, list, shorts, updateSavedMovies }) {
 
   return (
     <section className="cards__section">
+      {searchError ? (<p>{searchError}</p>) : ''}
       {noMovies ?
         (
           <p>По вашему запросу ничего не найдено</p>
@@ -25,6 +33,7 @@ function MoviesCardList({ movies, list, shorts, updateSavedMovies }) {
             key={movie.id}
             movie={movie}
             updateSavedMovies={updateSavedMovies}
+            savedMovies={savedMovies}
           />
         )))
       }

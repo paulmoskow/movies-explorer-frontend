@@ -10,23 +10,17 @@ function durationFormat(minutes) {
   return `${hours}ч ${min}м`;
 };
 
-function MoviesCard({ movie, updateSavedMovies }) {
+function MoviesCard({ savedMovies, movie, updateSavedMovies }) {
   //set saved status for movie
   const [saved, setSaved] = React.useState(false);
 
   //set icon status
   React.useEffect(() => {
-    mainApi.getMovies()
-    .then((movies) => {
-      const isMovieSaved = movies.some((m) => m.movieId === movie.id);
+      const isMovieSaved = savedMovies.some((m) => m.movieId === movie.id);
       if (isMovieSaved) {
         setSaved(true);
       }
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-  }, []);
+  }, [savedMovies]);
 
   //turn duration into right format
   const duration = durationFormat(movie.duration);
