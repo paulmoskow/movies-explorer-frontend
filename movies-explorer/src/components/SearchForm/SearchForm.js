@@ -1,10 +1,22 @@
+import React from "react";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 
-function SearchForm({ setShorts, onSearch }) {
+function SearchForm({ setShorts, onSearch, shorts }) {
+
+  const [searchPrompt, setSearchPrompt] = React.useState('');
+
+  React.useEffect(()=>{
+    const savedSearchPrompt = localStorage.getItem('searchPrompt');
+    if (savedSearchPrompt) {
+      setSearchPrompt(JSON.parse(savedSearchPrompt));
+    }
+  }, [])
 
   const handleSearch = (e) => {
     e.preventDefault();
     const searchMovie = e.target.elements.searchMovie.value;
+    setSearchPrompt(searchMovie);
+    localStorage.setItem('searchPrompt', JSON.stringify(searchMovie));
     onSearch(searchMovie);
   }
 
@@ -16,11 +28,15 @@ function SearchForm({ setShorts, onSearch }) {
             type="text"
             placeholder="Фильм"
             name="searchMovie"
+            value={searchPrompt || ''}
+            onChange={(e) => setSearchPrompt(e.target.value)}
             required
           />
           <button className="button search-form__button"></button>
         </div>
-        <FilterCheckbox setShorts={setShorts}/>
+        <FilterCheckbox setShorts={setShorts}
+          shorts={shorts}
+        />
       </form>
     </section>
   )

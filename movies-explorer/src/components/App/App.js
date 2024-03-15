@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes, useNavigate, useLocation } from 'react-router-dom';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 import Header from '../Header/Header';
@@ -18,7 +18,6 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import { mainApi } from '../../utils/MainApi';
 import { moviesApi } from '../../utils/MoviesApi';
 import { checkToken } from '../../utils/auth';
-import EditProfilePopup from '../EditProfilePopup/EditProfilePopup';
 
 function App() {
 
@@ -34,6 +33,7 @@ function App() {
   //set LoggedIn status
   const [loggedIn, setLoggedIn] = React.useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   //set token check
   React.useEffect(() => {
@@ -47,7 +47,11 @@ function App() {
         checkToken(token).then((res) => {
           if(res) {
             setLoggedIn(true);
-            navigate('/', {replace: true})
+            if (location.pathname) {
+              navigate(location.pathname, {replace: true});
+            } else {
+              navigate('/', {replace: true});
+            }
           }
         })
         .catch((err) => {
@@ -56,6 +60,14 @@ function App() {
       }
     }
   }
+
+//stay at certain location when reloaded
+  React.useEffect(() => {
+    if (loggedIn && location.pathname) {
+      navigate(location.pathname, {replace: true});
+    }
+  }, [loggedIn, location.pathname, navigate]);
+
 
   React.useEffect(() => {
     mainApi.loadUserInfo()
@@ -82,8 +94,10 @@ function App() {
   //check localStorage for saved search results to render movies if they are
   React.useEffect(() => {
     const savedSearch = localStorage.getItem('searchResults');
-    if (savedSearch) {
+    const shortsState = localStorage.getItem('shorts');
+    if (savedSearch || shortsState) {
       setSearchResults(JSON.parse(savedSearch));
+      setShorts(JSON.parse(shortsState));
     }
   }, [loggedIn]);
 
@@ -113,22 +127,12 @@ function App() {
           setSearchError('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз.')
         });
   }
-//set search for saved movies
-  const handleSavedSearch = (searchMovies) => {
-    const searchResults = savedMovies.filter(movie =>
-      movie.nameRU.toLowerCase().includes(searchMovies.toLowerCase()) ||
-      movie.nameEN.toLowerCase().includes(searchMovies.toLowerCase())
-    );
-    setSavedMovies(searchResults);
-  }
 
 //render saved movies
   React.useEffect(() => {
-    setPreloader(true);
     mainApi.getMovies()
       .then((movies) => {
         setSavedMovies(movies);
-        setPreloader(false);
       })
       .catch((err) => {
         console.log(err);
@@ -149,7 +153,9 @@ function App() {
   const handleSignOut = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('searchResults');
-    navigate('/signin', {replace: true});
+    localStorage.removeItem('shorts');
+    localStorage.removeItem('searchPrompt');
+    navigate('/', {replace: true});
     setLoggedIn(false);
   }
 
@@ -175,9 +181,6 @@ function App() {
      });
  };
 
-  //set edit profile popup
-  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
-
   //set infoTool status
   const [isTooltipPopupOpen, setIsTooltipPopupOpen] = React.useState(false);
   const [regInfo, setRegInfo] = React.useState({
@@ -190,18 +193,12 @@ function App() {
     setIsTooltipPopupOpen(true);
   }
 
-  //set edit profile popup open
-  function handleEditProfileClick() {
-    setIsEditProfilePopupOpen(true);
-  }
-
   function handleMenuClick() {
     setIsBurgerMenuOpen(true);
   }
 
   function closeAllPopups() {
     setIsTooltipPopupOpen(false);
-    setIsEditProfilePopupOpen(false);
     setIsBurgerMenuOpen(false);
   }
 
@@ -244,12 +241,8 @@ function App() {
                 />
                 {<ProtectedRoute element={SavedMovies}
                   loggedIn={loggedIn}
-                  movies={savedMovies}
-                  preloader={preloader}
+                  savedMovies={savedMovies}
                   onDelete={handleDeleteMovie}
-                  setShorts={setShorts}
-                  onSearch={handleSavedSearch}
-                  shorts={shorts}
                 />}
                 <Footer/>
               </>
@@ -261,11 +254,9 @@ function App() {
                 />
                 {<ProtectedRoute element={Profile}
                   loggedIn={loggedIn}
-                  name={currentUser.name}
-                  email={currentUser.email}
-                  onEditProfileClick={handleEditProfileClick}
                   onSignOut={handleSignOut}
-                  />}
+                  onUpdateUser={handleUpdateUser}
+                />}
               </>
             } />
             <Route path="/signin" element={
@@ -276,6 +267,7 @@ function App() {
             <Route path="/signup" element={
               <>
                 <Register handleRegister={handleRegister}
+                  handleLogin={handleLogin}
                   onRegistrationClick={handleRegistrationClick}/>
               </>
             } />
@@ -291,9 +283,6 @@ function App() {
           <InfoTooltip regInfo={regInfo}
             onClose={closeAllPopups}
             isOpen={isTooltipPopupOpen}
-          />
-          <EditProfilePopup isOpen={isEditProfilePopupOpen}
-            onUpdateUser={handleUpdateUser}
           />
       </div>
      </CurrentUserContext.Provider>

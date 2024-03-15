@@ -47,6 +47,7 @@ function Movies({ searchError,
     <section className='movies__section'>
       <SearchForm setShorts={setShorts}
         onSearch={onSearch}
+        shorts={shorts}
       />
       {preloader ? (
         <Preloader/>
@@ -59,7 +60,7 @@ function Movies({ searchError,
         searchError={searchError}
       />
       )}
-      {list < movies.length && (
+      {movies && list < movies.length && (
         <button onClick={showMore} className="button movies__button">Еще</button>
       )}
     </section>

@@ -13,7 +13,7 @@ function MoviesCardList({
   const [noMovies, setNoMovies] = React.useState(false);
 
   React.useEffect(() => {
-    if (movies.length === 0) {
+    if (movies && movies.length === 0) {
       setNoMovies(true);
     }
   }, [movies]);
@@ -28,7 +28,7 @@ function MoviesCardList({
           <p>По вашему запросу ничего не найдено</p>
         )
         :
-        (shortsFilter.slice(0, list).map((movie) => (
+        (movies && shortsFilter.slice(0, list).map((movie) => (
           <MoviesCard
             key={movie.id}
             movie={movie}

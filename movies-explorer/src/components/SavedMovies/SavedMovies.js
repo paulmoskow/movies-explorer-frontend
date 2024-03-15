@@ -1,59 +1,39 @@
 import React from 'react';
-import SearchForm from '../SearchForm/SearchForm';
+import SavedMoviesSearchForm from '../SavedMoviesSearchForm/SavedMoviesSearchForm';
 import SavedMoviesCardList from '../SavedMoviesCardList/SavedMoviesCardList';
-import Preloader from '../Preloader/Preloader';
 
-function SavedMovies({ movies, preloader, setShorts, shorts, onSearch, onDelete }) {
-
-  const [list, setList] = React.useState(12);
-
-  const showMore = () => {
-    if (window.innerWidth <= 1156) {
-      setList(list + 2);
-    } else {
-      setList(list + 3);
-    }
-  };
+function SavedMovies({ savedMovies, onDelete }) {
+  const [movies, setMovies] = React.useState([])
+  const [savedShorts, setSavedShorts] = React.useState(false);
 
   React.useEffect(() => {
-    const handleScreen = () => {
-    if (window.innerWidth <= 730) {
-      setList(5);
-    } else if (window.innerWidth <= 1156) {
-      setList(8);
-    } else {
-      setList(12);
-    }
-  };
+    setMovies(savedMovies);
+  }, [])
 
-  handleScreen();
-
-  window.addEventListener('resize', handleScreen);
-
-  return () => {
-    window.removeEventListener('resize', handleScreen);
-  };
-}, []);
+  //set search for saved movies
+  const handleSavedSearch = (searchMovies) => {
+    const searchResults = savedMovies.filter(movie =>
+      movie.nameRU.toLowerCase().includes(searchMovies.toLowerCase()) ||
+      movie.nameEN.toLowerCase().includes(searchMovies.toLowerCase())
+    );
+    setMovies(searchResults);
+  }
 
   return (
     <section className='movies__section'>
-      <SearchForm setShorts={setShorts}
-        onSearch={onSearch}
+      <SavedMoviesSearchForm
+        onSearch={handleSavedSearch}
+        savedShorts={savedShorts}
+        setSavedShorts={setSavedShorts}
       />
-      {preloader ? (
-        <Preloader/>
-      ) : (
-        <SavedMoviesCardList movies={movies}
-        list={list}
-        shorts={shorts}
+      <SavedMoviesCardList movies={movies}
+        savedShorts={savedShorts}
         onDelete={onDelete}
       />
-      )}
-      {list < movies.length && (
-        <button onClick={showMore} className="button movies__button">Еще</button>
-      )}
     </section>
   )
 }
 
 export default SavedMovies;
+
+

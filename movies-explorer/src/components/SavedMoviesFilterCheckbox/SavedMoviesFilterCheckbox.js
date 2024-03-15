@@ -1,9 +1,8 @@
-function FilterCheckbox({ setShorts, shorts }) {
+function SavedMoviesFilterCheckbox({ setSavedShorts, savedShorts }) {
 
   const handleCheckbox = (e) => {
     const isChecked = e.target.checked;
-    setShorts(isChecked);
-    localStorage.setItem('shorts', JSON.stringify(isChecked));
+    setSavedShorts(isChecked);
   };
 
   return (
@@ -11,7 +10,7 @@ function FilterCheckbox({ setShorts, shorts }) {
       <input className="search-form__checkbox"
         type="checkbox"
         onChange={handleCheckbox}
-        checked={shorts}
+        checked={savedShorts}
       />
       <label className="search-form__label"></label>
       <p className="filter-checkbox__text">Короткометражки</p>
@@ -19,4 +18,4 @@ function FilterCheckbox({ setShorts, shorts }) {
   )
 }
 
-export default FilterCheckbox;
+export default SavedMoviesFilterCheckbox;
