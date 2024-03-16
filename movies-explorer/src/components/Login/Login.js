@@ -9,6 +9,8 @@ function Login({ handleLogin }) {
 
   const { formValues, handleChange, errors, isValid, resetForm } = useFormValidation();
   const [serverError, setServerError] = React.useState('');
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+
 
   const navigate = useNavigate();
 
@@ -16,6 +18,7 @@ function Login({ handleLogin }) {
     e.preventDefault();
 
     if (isValid) {
+      setIsSubmitting(true);
       const { email, password } = formValues;
       login(email, password)
         .then((data) => {
@@ -32,6 +35,7 @@ function Login({ handleLogin }) {
         })
         .finally(() => {
           resetForm();
+          setIsSubmitting(false);
         });
     } else {
       console.log('There are errors in form, can not submit')
@@ -49,6 +53,7 @@ function Login({ handleLogin }) {
           className="input__field"
           type="email"
           name="email"
+          disabled={isSubmitting}
           required
         />
         <span className="input__error">{errors.email}</span>
@@ -58,6 +63,7 @@ function Login({ handleLogin }) {
           className={`input__field ${errors.password ? "input__field-invalid" : ''}`}
           type="password"
           name="password"
+          disabled={isSubmitting}
           required
         />
         <span className="input__error">{errors.password}</span>

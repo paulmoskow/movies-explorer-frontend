@@ -10,6 +10,7 @@ import unsucceed from '../../images/no-union.svg';
 function Register({ handleRegister, onRegistrationClick, handleLogin }) {
 
   const { formValues, handleChange, errors, isValid, resetForm } = useFormValidation();
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
 
   const navigate = useNavigate();
 
@@ -17,6 +18,7 @@ function Register({ handleRegister, onRegistrationClick, handleLogin }) {
     e.preventDefault();
 
     if (isValid) {
+      setIsSubmitting(true);
       const { name, email, password } = formValues;
       register(name, email, password)
         .then((data) => {
@@ -39,6 +41,7 @@ function Register({ handleRegister, onRegistrationClick, handleLogin }) {
         .finally(() => {
           onRegistrationClick();
           resetForm();
+          setIsSubmitting(false);
         });
     } else {
       console.log('Что-то пошло не так! Попробуйте еще раз.')
@@ -56,6 +59,7 @@ function Register({ handleRegister, onRegistrationClick, handleLogin }) {
           className="input__field"
           type="text"
           name="name"
+          disabled={isSubmitting}
           required
         />
         <span className="input__error">{errors.name}</span>
@@ -65,6 +69,7 @@ function Register({ handleRegister, onRegistrationClick, handleLogin }) {
           className="input__field"
           type="email"
           name="email"
+          disabled={isSubmitting}
           required
         />
         <span className="input__error">{errors.email}</span>
@@ -74,6 +79,7 @@ function Register({ handleRegister, onRegistrationClick, handleLogin }) {
           className={`input__field ${errors.password ? "input__field-invalid" : ''}`}
           type="password"
           name="password"
+          disabled={isSubmitting}
           required
         />
         <span className="input__error">{errors.password}</span>
