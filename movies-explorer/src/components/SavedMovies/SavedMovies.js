@@ -8,7 +8,7 @@ function SavedMovies({ savedMovies, onDelete }) {
 
   React.useEffect(() => {
     setMovies(savedMovies);
-  }, [])
+  }, [savedMovies, movies])
 
   //set search for saved movies
   const handleSavedSearch = (searchMovies) => {

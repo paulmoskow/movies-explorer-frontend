@@ -1,7 +1,5 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { apiInitialMovies } from "../../utils/constants";
-import { mainApi } from "../../utils/MainApi";
 
 //turn duration into right format
 function durationFormat(minutes) {
