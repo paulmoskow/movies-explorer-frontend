@@ -25,15 +25,15 @@ export function useFormValidation() {
         }
     }
 
-    setFormValues({
+    setFormValues(formValues => ({
       ...formValues,
       [name]: value
-    });
+    }));
 
-    setErrors({
+    setErrors(errors => ({
       ...errors,
       [name]: errorMessage
-    });
+    }));
 
     setIsValid(target.closest('form').checkValidity());
   }, [formValues, errors]);
