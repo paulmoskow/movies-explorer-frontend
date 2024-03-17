@@ -1,6 +1,5 @@
 .nav-popup {
   width: 99.5%;
-  height: 100%;
   background: #0000001E;
   display: flex;
   visibility: hidden;
@@ -13,14 +12,18 @@
   left: 0;
 }
 
+.nav-popup_opened {
+  visibility: visible;
+}
+
 .nav-popup__container {
   width: 67.7%;
-  height: 100%;
   background: #000000;
   display: flex;
   flex-direction: column;
   justify-content: right;
   align-items: end;
+  overflow-y: auto;
 }
 
 .nav-popup__close-button {
@@ -66,4 +69,11 @@
   .nav-popup__container {
     width: 100%;
   }
+
+  .nav-popup__profile {
+    margin: 30vh auto 46px;
+    align-self: center;
+    justify-self: end;
+  }
 }
+

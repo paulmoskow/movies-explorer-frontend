@@ -1,0 +1,136 @@
+.opacity {
+  margin-top: 72px;
+/*  background-color: #202020;
+  color: #fff;*/
+}
+
+.red{
+  border: solid 1px red;
+}
+.green{
+  border: solid 1px green;
+}
+.orange{
+  border: solid 1px orange;
+}
+
+
+
+.popup {
+  width: 99.5%;
+  height: 100%;
+  /*background: #00000080;*/
+  display: flex;
+  visibility: hidden;
+/*  opacity: 0;*/
+  transition: visibility 0s, opacity 300ms linear 300ms;
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.popup_stable {
+  align-items: start;
+}
+
+.popup_opened {
+  visibility: visible;
+ /* opacity: 1;*/
+  transition: visibility 0s, opacity 300ms linear 0s;
+}
+
+.popup__container {
+  width: 430px;
+  background-color: #202020;
+  color: #fff;
+  border-radius: 10px;
+}
+
+.popup__container-elements {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.popup__close-button {
+  width: 32px;
+  height: 32px;
+  background-image: url("../../images/close_icon.svg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #00000000;
+  border: none;
+  position: relative;
+  top: -32px;
+  right: -430px;
+  cursor: pointer;
+  align-self: last baseline;
+}
+
+.popup__close-button:hover {
+  opacity: 0.6;
+}
+
+.popup__close-button_photo {
+  position: initial;
+  align-self: flex-end;
+  margin: 0 -40px 8px 0;
+}
+
+.popup__image {
+  object-fit: contain;
+  object-position: center;
+  max-height: 75vh;
+  max-width: 75vw;
+}
+
+.popup__image-registration {
+  width: 120px;
+  margin: 25px auto 32px;
+}
+
+.popup__registration-status {
+  margin: 0 auto 60px;
+  color: #fff;
+  width: 358px;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 900;
+  line-height: normal;
+}
+
+@media screen and (max-width: 660px) {
+/*  .popup__container {
+    width: 282px;
+  }
+*/
+  .popup__close-button {
+    width: 20px;
+    height: 20px;
+    right: -262px;
+    top: -36px;
+  }
+
+  .popup__close-button_photo {
+    margin: 0 0 16px;
+  }
+
+  .popup__image-registration {
+    margin: 15px auto 40px;
+  }
+
+  .popup__registration-status  {
+    width: 244px;
+    margin: 0 auto 50px;
+    font-size: 1.25rem;
+  }
+}
+
+

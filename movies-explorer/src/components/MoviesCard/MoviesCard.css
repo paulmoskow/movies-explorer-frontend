@@ -11,6 +11,11 @@
   right: 14px;
   position: absolute;
   background-repeat: no-repeat;
+  visibility: hidden;
+}
+
+.card__section:hover .card__button {
+  visibility: visible;
 }
 
 .card__button-liked {
@@ -68,6 +73,10 @@
   .card__image {
     width: 339px;
     height: 190px;
+  }
+
+  .card__button {
+    visibility: visible;
   }
 }
 

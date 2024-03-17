@@ -1,24 +1,5 @@
-import whenIThinkOfGerman from '../images/pic__COLOR_pic.jpg';
+export const apiInitialMovies = 'https://api.nomoreparties.co';
 
-export const cards = [
-  {
-    image: whenIThinkOfGerman,
-    nameRu: 'Когда я думаю о Германии ночью',
-    duration: '1ч17м',
-  },
-  {
-    image: whenIThinkOfGerman,
-    nameRu: 'Когда я думаю о Германии ночью',
-    duration: '1ч17м',
-  },
-  {
-    image: whenIThinkOfGerman,
-    nameRu: 'Когда я думаю о Германии ночью',
-    duration: '1ч17м',
-  },
-  {
-    image: whenIThinkOfGerman,
-    nameRu: 'Когда я думаю о Германии ночью',
-    duration: '1ч17м',
-  }
-]
+//export const BASE_URL = 'http://localhost:3000';
+
+export const BASE_URL = 'https://api.pmdiploma.students.nomoredomainswork.ru';
