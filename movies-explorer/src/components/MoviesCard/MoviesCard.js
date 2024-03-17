@@ -32,7 +32,7 @@ function MoviesCard({ savedMovies, movie, updateSavedMovies }) {
         .then((res) => {
           if(res) {
             setSaved(true);
-            updateSavedMovies();
+            updateSavedMovies(res);
           }
         })
         .catch((err) => {
@@ -44,7 +44,7 @@ function MoviesCard({ savedMovies, movie, updateSavedMovies }) {
         .then((res) => {
           if(res) {
             setSaved(false);
-            updateSavedMovies();
+            updateSavedMovies(res);
           }
         })
         .catch((err) => {

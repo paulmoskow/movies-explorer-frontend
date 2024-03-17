@@ -3,20 +3,15 @@ import SavedMoviesSearchForm from '../SavedMoviesSearchForm/SavedMoviesSearchFor
 import SavedMoviesCardList from '../SavedMoviesCardList/SavedMoviesCardList';
 
 function SavedMovies({ savedMovies, onDelete }) {
-  const [movies, setMovies] = React.useState([])
   const [savedShorts, setSavedShorts] = React.useState(false);
+  const [searchResults, setSearchResults] = React.useState(savedMovies);
 
-  React.useEffect(() => {
-    setMovies(savedMovies);
-  }, [savedMovies, movies])
-
-  //set search for saved movies
   const handleSavedSearch = (searchMovies) => {
-    const searchResults = savedMovies.filter(movie =>
+    const filteredMovies = savedMovies.filter(movie =>
       movie.nameRU.toLowerCase().includes(searchMovies.toLowerCase()) ||
       movie.nameEN.toLowerCase().includes(searchMovies.toLowerCase())
     );
-    setMovies(searchResults);
+    setSearchResults(filteredMovies);
   }
 
   return (
@@ -26,7 +21,7 @@ function SavedMovies({ savedMovies, onDelete }) {
         savedShorts={savedShorts}
         setSavedShorts={setSavedShorts}
       />
-      <SavedMoviesCardList movies={movies}
+      <SavedMoviesCardList movies={searchResults}
         savedShorts={savedShorts}
         onDelete={onDelete}
       />

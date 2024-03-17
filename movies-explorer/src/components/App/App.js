@@ -47,7 +47,7 @@ function App() {
         checkToken(token).then((res) => {
           if(res) {
             setLoggedIn(true);
-            if (location.pathname) {
+            if (location.pathname !== '/signin' && location.pathname !== '/signup') {
               navigate(location.pathname, {replace: true});
             } else {
               navigate('/', {replace: true});
@@ -140,15 +140,15 @@ function App() {
   }, [loggedIn])
 
   //render saved movies when changes
-  const updateSavedMovies = () => {
-    mainApi.getMovies()
-      .then((movies) => {
-        setSavedMovies(movies);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-  }
+  const updateSavedMovies = (newMovie) => {
+    const isMovieSaved = savedMovies.some(movie => movie._id === newMovie._id);
+    if (isMovieSaved) {
+      const updatedSavedMovies = savedMovies.filter(movie => movie._id !== newMovie._id);
+      setSavedMovies(updatedSavedMovies);
+    } else {
+      setSavedMovies(prevSavedMovies => [...prevSavedMovies, newMovie]);
+    }
+  };
 
   const handleSignOut = () => {
     localStorage.removeItem('token');
